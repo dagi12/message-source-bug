@@ -9,7 +9,6 @@ import org.springframework.context.MessageSource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
@@ -24,11 +23,11 @@ public class MessageSourceBugApplicationTests {
 
     @Test
     public void contextLoads() {
-        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken("foo", "foo");
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken("foo", "{noop}foo");
         try {
             authenticationManager.authenticate(usernamePasswordAuthenticationToken);
         } catch (BadCredentialsException e) {
-            Assert.assertEquals("asd", e.getMessage());
+            Assert.assertEquals("bar", e.getMessage());
         }
     }
 

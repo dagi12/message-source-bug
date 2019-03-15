@@ -14,7 +14,7 @@ public class MessagePropertiesConfiguration {
     @Bean
     public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename("classpath:security");
+        messageSource.setBasename("classpath:messages");
         return messageSource;
     }
 
